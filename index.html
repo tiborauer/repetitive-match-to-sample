@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Repetitive Match-to-Sample [PsychoPy]</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+</head>
+
+<body>
+    <div id="dialog-consent" title="Information and consent">
+        <p id="consent-text"><span style="float:left; margin:12px 12px 20px 0;"></span></p>
+    </div>
+
+     <!-- external libraries -->
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="https://www.localeplanet.com/api/auto/icu.js"></script>
+    <script src="https://www.localeplanet.com/api/translate.js"></script>
+    
+    <!-- instructions -->
+    <script type="application/javascript" src="resources/de.js"></script>
+    <script type="application/javascript" src="resources/en.js"></script>
+    <script type="application/javascript" src="resources/es.js"></script>
+    <script type="application/javascript" src="resources/hu.js"></script>
+    <script type="application/javascript" src="resources/pt.js"></script>
+    <script type="application/javascript" src="resources/zh.js"></script>
+
+    <!-- consent -->
+    <script>
+        let lng = window.icu.getLanguage(); // en, de, hu, zh, pt, es
+        if (Object.keys(window).includes(lng)) {
+            _.setTranslation(eval(lng));
+        } else {
+            _.setTranslation(en);
+        }
+
+        document.getElementById("consent-text").innerHTML = _('cons_text')
+
+        let dlg_buttons = {}
+        dlg_buttons[_('cons_a')[0]] = function() {
+                $( this ).dialog( "close" );
+                window.location.href = "experiment.html" + window.location.search;
+                };
+        dlg_buttons[_('cons_a')[1]] = function() {
+                $( this ).dialog( "close" );
+                };
+    
+        $( function() {
+            $( "#dialog-consent" ).dialog({
+            resizable: false,
+            height: "auto",
+            width: 800,
+            modal: true,
+            buttons: dlg_buttons
+            });
+        });
+    </script>
+</body>
+
+</html>

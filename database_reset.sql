@@ -1,0 +1,1 @@
+TRUNCATE  `nemo-experiments`.repetitive_match_to_sample

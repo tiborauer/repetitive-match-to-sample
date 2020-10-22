@@ -1,0 +1,14 @@
+{
+	"experiment" : {
+		"name" : "Repetitive match-to-sample",
+		"fullpath" : "nemo/repetitive-match-to-sample",
+	},
+
+	"pavlovia" : {
+		"URL" : "https://pavlovia.org/"
+	},
+
+	"gitlab" : {
+		"projectId" : 29575
+	}
+}
