@@ -1351,3 +1351,5 @@ function saveData() {
   console.log('Saving data:');
   console.log(JSON.stringify(datatoDB));
 }
+
+window.onunload = saveData;
