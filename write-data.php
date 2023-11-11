@@ -7,7 +7,11 @@ include('resources/database_config.php');
 $data_array = json_decode(file_get_contents('php://input'), true);
 
 try {
-    $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
+    $options = array(
+        PDO::MYSQL_ATTR_SSL_CA => '/home/site/certs/BaltimoreCyberTrustRoot.crt.pem',
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+    );
+    $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password, $options);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // First stage is to get all column names from the table and store
     // them in $col_names array.
